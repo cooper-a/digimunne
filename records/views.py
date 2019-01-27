@@ -20,3 +20,6 @@ def index(request):
     template = loader.get_template('records/index.html')
     return HttpResponse(template.render(context, request))
 
+def home(request):
+    template = loader.get_template('records/home.html')
+    return HttpResponse(template.render())

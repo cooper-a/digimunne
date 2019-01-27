@@ -1,0 +1,111 @@
+
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Digimmune-Home</title>
+
+    {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'records/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'records/round-about.css' %}" rel="stylesheet" type="text/css">
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #00AFC7;">
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                    <a class="navbar-brand" href="#">
+                            <img src="http://icons-for-free.com/free-icons/png/512/1287507.png" alt="" width="30" height="30" alt="">
+                    </a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Edit Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Sign Out</a>
+                  </div>
+                </li>
+
+                
+              </ul>
+              
+              <a href="{% url 'home' %}"><img class="logo-navbar-middle" src="{% static 'records/Digimmune1.png' %}" width="400px" height="auto" alt="Logo Thing main logo"></a>
+
+
+
+              <button type="button" class="button1" type="submit"> Card +</button>
+            </div>
+
+
+        </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Introduction Row -->
+      <br>
+      <div class="col-sm-6 text-center mb-41">
+            <a href="{% url 'index' %}">
+            <img class="rounded-circle-user img-fluid d-block mx-auto" src="http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/images/6aa92437-80a9-4082-9d1c-b0ad0ebeddd8/md/2431068-1465346515088-large.gif" alt="">
+            </a>
+            <h3>User's Name</h3>
+            <h6 class="Name-Header">Me</h6>
+    </div>
+    <br>
+
+      
+      <!-- Team Members Row -->
+      <div class="row">
+          <br><br>
+        
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" src="data:image/jpeg;base64,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" alt="">
+          <h3>Name</h3>
+          <h6 class="Name-Header">Daughter</h6>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" src="https://avatarfiles.alphacoders.com/124/thumb-124748.png" alt="">
+          <h3>Name</h3>
+          <h6 class="Name-Header">Relative</h6>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" src="https://i.pinimg.com/236x/d6/0b/d2/d60bd2834010e1e37d105a5bb4141e5f--pusheen-cat-cat-gif.jpg" alt="">
+          <h3>Name</h3>
+          <h6 class="Name-Header">Brother</h6>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" src="https://aht.seriouseats.com/images/2011/08/20110824-pusheen-burger-200x200.gif" alt="">
+          <h3>Name</h3>
+          <h6 class="Name-Header">Relative</h6>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" src="https://cdn190.picsart.com/230265436005202.jpg?c256x256" alt="">
+          <h3>Name</h3>
+          <h6 class="Name-Header">Extended Family</h6>
+        </div>
+      </div>
+    <br><br>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-3" style="background-color: #00AFC7;">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Digimmune</p>
+      </div>
+      <!-- /.container -->
+    </footer>
