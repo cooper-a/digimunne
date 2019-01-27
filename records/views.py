@@ -21,5 +21,9 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def home(request):
+    all_patients = Patient.objects.all()
+    context = {
+        'all_patients': all_patients,
+    }
     template = loader.get_template('records/home.html')
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(context, request))

@@ -9,11 +9,17 @@
     <title>Digimmune-Home</title>
 
     {% load static %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- Bootstrap core CSS -->
     <link href="{% static 'records/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'records/round-about.css' %}" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="{% static 'records/bootstrap/js/bootstrap.js' %}"></script>
+    
 
 
 
@@ -26,20 +32,23 @@
                             <img src="http://icons-for-free.com/free-icons/png/512/1287507.png" alt="" width="30" height="30" alt="">
                     </a>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    User
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Edit Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Sign Out</a>
-                  </div>
+                  <div class="dropdown">
+                      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Users
+                      </button>
+                    <div class="dropdown-menu">
+                        {% for patients in all_patients %}
+                        <a class="dropdown-item" href="#">{{patients.first_name}} {{patients.last_name}}</a>
+                        <div class="dropdown-divider"></div>
+                        {% endfor %}
+                    </div>
+                  </div> 
                 </li>
 
                 
               </ul>
               
-              <a href="{% url 'home' %}"><img class="logo-navbar-middle" src="{% static 'records/Digimmune1.png' %}" width="400px" height="auto" alt="Logo Thing main logo"></a>
+              <a href="{% url 'home' %}"><img class="logo-navbar-middle" src="{% static 'records/Digimmune1.png' %}" width="300px" height="auto" alt="Logo Thing main logo"></a>
 
 
 
@@ -50,7 +59,7 @@
         </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="padding-top:50px">
 
       <!-- Introduction Row -->
       <br>
@@ -58,12 +67,14 @@
             <a href="{% url 'index' %}">
             <img class="rounded-circle-user img-fluid d-block mx-auto" src="http://s3.amazonaws.com/cdn.roosterteeth.com/uploads/images/6aa92437-80a9-4082-9d1c-b0ad0ebeddd8/md/2431068-1465346515088-large.gif" alt="">
             </a>
-            <h3>User's Name</h3>
+            <h3>{{all_patients.0.first_name}} {{all_patients.0.last_name}}</h3>
             <h6 class="Name-Header">Me</h6>
     </div>
+  </div>
     <br>
 
-      
+
+      <div class="container">
       <!-- Team Members Row -->
       <div class="row">
           <br><br>

@@ -16,18 +16,7 @@
   .container {
     align-content: center
   }
-  
-  .button {
-    background-color: #bdf5fd; /* teal */
-    border: none;
-    color: #00AFC7;
-    padding: 15px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-  }
+
   
   .button1 {
     background-color: #bdf5fd; 
@@ -69,9 +58,6 @@
     color: #00AFC7;
   }
   
-  .dropdown-item {
-    color: #00AFC7;
-  }
   
   
   .col-lg-4 {
@@ -99,4 +85,12 @@
   
   .User-Details-Immune-Record-Page{
     font-size: 18pt;
+  }
+
+  /* Navbar container */
+.navbar {
+  background-color: #333;
+  font-family: Arial;
+}
+
   }
