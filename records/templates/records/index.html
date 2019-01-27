@@ -1,6 +1,135 @@
 
-<body>
-    <h1>
-        Testing
-    </h1>
-</body>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Digimmune-Me</title>
+
+<!-- Bootstrap core CSS -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+{% load static %}
+<link href="{% static 'records/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{% static 'records/round-about.css' %}" rel="stylesheet" type="text/css">
+
+<!-- Bootstrap Datatables  -->
+<script type="text/javascript" src="{% static 'records/table-sort.js' %}"></script>
+<script type="text/javascript" src="{% static 'records/bootstrap/js/bootstrap.js' %}"></script>
+
+<style>
+    table {
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid rgb(186, 242, 250);
+    }
+    
+    th {
+        cursor: pointer;
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 16px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: rgb(186, 242, 250)
+    }
+</style>
+
+<script>
+function arrowDown(n){
+  if(n === 0){
+    document.getElementById("img-0").src="{% static 'records/arrow-down.png' %}";
+    document.getElementById("img-1").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-2").src="{% static 'records/arrow-right.png' %}";
+  }
+  else if(n === 1){
+    document.getElementById("img-0").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-1").src="{% static 'records/arrow-down.png' %}";
+    document.getElementById("img-2").src="{% static 'records/arrow-right.png' %}";
+  }
+  else if(n === 2){
+    document.getElementById("img-0").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-1").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-2").src="{% static 'records/arrow-down.png' %}";
+  }
+
+}
+
+</script>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #bdf5fd;">
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <a class="navbar-brand" href="#">
+                        <img src="http://icons-for-free.com/free-icons/png/512/1287507.png" width="30" height="30" alt="">
+                </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for patients in all_patients %}
+                    <a class="dropdown-item" href="#">{{patients.first_name}} {{patients.last_name}}</a>
+                    <div class="dropdown-divider"></div>
+                    {% endfor %}
+                    
+                    </div>
+                </li>
+            </ul>
+            <a href="{% url 'home' %}"><img class="logo-navbar-middle" src="{% static 'records/Digimmune1.png' %}" width="300px" height="auto" alt="Logo Thing main logo"></a>
+            <button type="button" class="button1" type="submit"> Card +</button>
+        </div>
+    </nav>
+
+<!-- Page Content -->
+<div class="container" style="padding-top:50px">
+
+<br>
+
+{% if all_patients %}
+    
+    <p class="Immune-Record-Title"><strong>Immunization Record</strong></p>
+    <p class="User-Details-Immune-Record-Page"><b>Full Name: </b>{{all_patients.0.first_name}} {{all_patients.0.last_name}}</p>
+    <p class="User-Details-Immune-Record-Page"><b>Date of Birth:</b> {{all_patients.0.year_of_birth}}/{{all_patients.0.month_of_birth}}/{{all_patients.0.day_of_birth}}</p>
+    
+    <!-- Introduction Row -->
+    <table id="myTable">
+        <tr>
+            <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+            <th onclick="sortTable(0); arrowDown(0);">Vaccine Name <img id="img-0" width="20px" margin-left="10px" src="{% static 'records/arrow-right.png' %}"></th>
+            <th onclick="sortTable(1); arrowDown(1);">Date Immunized (yyyy-mm-dd)<img id="img-1" width="20px" margin-left="10px" src="{% static 'records/arrow-right.png' %}"></th>
+            <th onclick="sortTable(2); arrowDown(2);">Expiry Date (yrs)<img id="img-2" width="20px" margin-left="10px" src="{% static 'records/arrow-right.png' %}"></th>
+        </tr>
+        {% for vaccinations in all_patients.0.vaccinations.all %}
+        <tr>
+            <td>{{vaccinations.disease_name}}</td>
+            <td>{{vaccinations.year}}-{{vaccinations.month}}-{{vaccinations.day}}</td>
+            <td>{{vaccinations.expiration_date}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+<br><br><br><br><br><br><br>
+</div>
+{% endif %}
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-3 fixed-bottom" style="background-color: #bdf5fd;">
+    <div class="container">
+    <p class="m-0 text-center text-black">Copyright &copy; Digimmune</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
+
