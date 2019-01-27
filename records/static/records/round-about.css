@@ -18,9 +18,9 @@
   }
   
   .button {
-    background-color: #00AFC7; /* Green */
+    background-color: #bdf5fd; /* teal */
     border: none;
-    color: white;
+    color: #00AFC7;
     padding: 15px 10px;
     text-align: center;
     text-decoration: none;
@@ -30,8 +30,8 @@
   }
   
   .button1 {
-    background-color: #00AFC7; 
-    color: white; 
+    background-color: #bdf5fd; 
+    color: #00AFC7; 
     border: 1.25px solid white;
     padding: 7px 20px;
     margin: 2px 2px;
@@ -39,8 +39,8 @@
   }
   
   .button1:hover {
-    background-color: white;
-    color: #00AFC7;
+    background-color: #00AFC7;
+    color: #bdf5fd;
   }
   
   .rounded-circle {
