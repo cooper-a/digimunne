@@ -75,10 +75,13 @@
 <div class="container">
 
 <br>
-<p class="Immune-Record-Title"><strong>Immunization Record</strong></p>
-<p class="User-Details-Immune-Record-Page"><b>Full Name:</b> User Name</p>
-<p class="User-Details-Immune-Record-Page"><b>Date of Birth:</b> 09/10/2000</p>
 
+{% if all_patients %}
+    
+    <p class="Immune-Record-Title"><strong>Immunization Record</strong></p>
+    <p class="User-Details-Immune-Record-Page"><b>Full Name:</b>{% for patients in all_patients %} {{patients.first_name}} {{patients.last_name}} {% endfor %}</p>
+    <p class="User-Details-Immune-Record-Page"><b>Date of Birth:</b> 09/10/2000</p>
+    
     <!-- Introduction Row -->
     <table id="myTable">
         <tr>
@@ -130,6 +133,7 @@
         </table>
 <br><br><br><br><br><br><br>
 </div>
+{% endif %}
 <!-- /.container -->
 
 <!-- Footer -->
