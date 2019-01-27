@@ -1,5 +1,148 @@
 
 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Digimmune-Me</title>
+
+<!-- Bootstrap core CSS -->
+{% load static %}
+<link href="{% static 'records/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="{% static 'records/round-about.css' %}" rel="stylesheet" type="text/css">
+
+<!-- Bootstrap Datatables  -->
+<script type="text/javascript" src="{% static 'records/table-sort.js' %}"></script>
+
+<style>
+    table {
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid rgb(186, 242, 250);
+    }
+    
+    th {
+        cursor: pointer;
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 16px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: rgb(186, 242, 250)
+    }
+</style>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #00AFC7;">
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <a class="navbar-brand" href="#">
+                        <img src="http://icons-for-free.com/free-icons/png/512/1287507.png" width="30" height="30" alt="">
+                </a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                User
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Edit Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Sign Out</a>
+                </div>
+            </li>
+
+            
+            </ul>
+            
+            <a href="#"><img class="logo-navbar-middle" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/32877/logo-thing.png" width="200" alt="Logo Thing main logo"></a>
+
+
+
+            <button type="button" class="button1" type="submit"> Card +</button>
+        </div>
+
+
+    </nav>
+
+<!-- Page Content -->
+<div class="container">
+
+<br>
+<p class="Immune-Record-Title"><strong>Immunization Record</strong></p>
+<p class="User-Details-Immune-Record-Page"><b>Full Name:</b> User Name</p>
+<p class="User-Details-Immune-Record-Page"><b>Date of Birth:</b> 09/10/2000</p>
+
+    <!-- Introduction Row -->
+    <table id="myTable">
+        <tr>
+            <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+            <th onclick="sortTable(0)">Vaccine Name</th>
+            <th onclick="sortTable(1)">Date Immunized (dd-mm-yyyy)</th>
+            <th onclick="sortTable(2)">Expiry Date (yrs)</th>
+        </tr>
+        <tr>
+            <td>Diphtheria</td>
+            <td>10-12-2018</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Hib</td>
+            <td>02-04-2014</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Measles</td>
+            <td>03-04-2014</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Pneumo Conjugate</td>
+            <td>02-04-2014</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Polio (IPV)</td>
+            <td>05-04-2015</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Polio (OPV)</td>
+            <td>01-04-2013</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Rotavirus</td>
+            <td>01-09-2013</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Tetanus</td>
+            <td>09-12-2015</td>
+            <td>5</td>
+        </tr>
+        </table>
+<br><br><br><br><br><br><br>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-3 fixed-bottom" style="background-color: #00AFC7;">
+    <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Digimmune</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
+
+
 {% if all_patients %}
     <h1>
         Patients
@@ -24,20 +167,4 @@
             {% endfor %}
      
     {% endfor %}
-        <h5>
-            {% if all_vaccinations %}
-                    
-                {% for vaccination in all_vaccinations %}
-                
-                    <h4>
-                            {{ vaccination.patient.all }}
-                        <i> {{ vaccination.disease_name }} </i> 
-                    </h4>
-                    
-                {% endfor %}
-            {% endif %}
-        </h5>
 {% endif %}
-<h1>
-    Another Test
-</h1>

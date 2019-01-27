@@ -17,8 +17,6 @@ class Vaccination(models.Model):
         ordering = ('disease_name',)
 
     pass
-
-    #patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     
 
 class Patient(models.Model):
