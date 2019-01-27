@@ -1,29 +1,34 @@
 from django.db import models
 
 # Create your models here.
-class Patient(models.Model):
-
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    year_ob = models.CharField(max_length=4)
-    month_ob = models.CharField(max_length=2)
-    day_ob = models.CharField(max_length=2)
-
-    def __str__(self):
-        return self.first_name + " " + self.last_name
-    
-
 
 class Vaccination(models.Model):
     year = models.CharField(max_length=4)
     month = models.CharField(max_length=2)
     day = models.CharField(max_length=2)
     disease_name = models.CharField(max_length=200)
-    patient = models.ManyToManyField(Patient)
+    expiration_date = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.disease_name
+        return (self.disease_name + '\n\t' 
+                + self.day + '-' + self.month + "-" + self.year)
+
+    class Meta:
+        ordering = ('disease_name',)
+
+    pass
 
     #patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     
 
+class Patient(models.Model):
+
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    year_of_birth = models.CharField(max_length=4)
+    month_of_birth = models.CharField(max_length=2)
+    day_of_birth = models.CharField(max_length=2)
+    vaccinations = models.ManyToManyField(Vaccination)
+
+    def __str__(self):
+        return self.first_name + " " + self.last_name

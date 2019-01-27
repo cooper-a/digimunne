@@ -1,16 +1,42 @@
 
 
-{% if all_questions %}
-    {% for questions in all_questions %}
-        <h1>
-            Questions
-        </h1>
+{% if all_patients %}
+    <h1>
+        Patients
+    </h1>
+    {% for patient in all_patients %}
         <h4>
-            {% if questions %}
-                {{ questions.question_text }}
+            {% if patient %}
+                {{ patient.first_name }} {{ patient.last_name }}
             {% endif %}
         </h4>
+     
+            {% for vaccinations in patient.vaccinations.all %}
+                <h5>
+                    {{vaccinations.disease_name}}
+                </h5>
+                <p>
+                    {{vaccinations.year}}{{vaccinations.month}}{{vaccinations.day}}
+                </p>
+                <p>
+                    {{vaccinations.expiration_date}}
+                </p>
+            {% endfor %}
+     
     {% endfor %}
+        <h5>
+            {% if all_vaccinations %}
+                    
+                {% for vaccination in all_vaccinations %}
+                
+                    <h4>
+                            {{ vaccination.patient.all }}
+                        <i> {{ vaccination.disease_name }} </i> 
+                    </h4>
+                    
+                {% endfor %}
+            {% endif %}
+        </h5>
 {% endif %}
 <h1>
     Another Test
