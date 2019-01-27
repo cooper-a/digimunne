@@ -1,11 +1,17 @@
 
+
 {% if all_questions %}
-<h1>
-    Testing
-    
-</h1>
+    {% for questions in all_questions %}
+        <h1>
+            Questions
+        </h1>
+        <h4>
+            {% if questions %}
+                {{ questions.question_text }}
+            {% endif %}
+        </h4>
+    {% endfor %}
 {% endif %}
 <h1>
     Another Test
 </h1>
-
