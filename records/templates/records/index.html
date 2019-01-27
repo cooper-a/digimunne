@@ -38,6 +38,28 @@
     }
 </style>
 
+<script>
+function arrowDown(n){
+  if(n === 0){
+    document.getElementById("img-0").src="{% static 'records/arrow-down.png' %}";
+    document.getElementById("img-1").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-2").src="{% static 'records/arrow-right.png' %}";
+  }
+  else if(n === 1){
+    document.getElementById("img-0").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-1").src="{% static 'records/arrow-down.png' %}";
+    document.getElementById("img-2").src="{% static 'records/arrow-right.png' %}";
+  }
+  else if(n === 2){
+    document.getElementById("img-0").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-1").src="{% static 'records/arrow-right.png' %}";
+    document.getElementById("img-2").src="{% static 'records/arrow-down.png' %}";
+  }
+
+}
+
+</script>
+
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #bdf5fd;">
@@ -72,20 +94,20 @@
     
     <p class="Immune-Record-Title"><strong>Immunization Record</strong></p>
     <p class="User-Details-Immune-Record-Page"><b>Full Name: </b>{{all_patients.0.first_name}} {{all_patients.0.last_name}}</p>
-    <p class="User-Details-Immune-Record-Page"><b>Date of Birth:</b> {{all_patients.0.day_of_birth}}/{{all_patients.0.month_of_birth}}/{{all_patients.0.year_of_birth}}</p>
+    <p class="User-Details-Immune-Record-Page"><b>Date of Birth:</b> {{all_patients.0.year_of_birth}}/{{all_patients.0.month_of_birth}}/{{all_patients.0.day_of_birth}}</p>
     
     <!-- Introduction Row -->
     <table id="myTable">
         <tr>
             <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
-            <th onclick="sortTable(0)">Vaccine Name</th>
-            <th onclick="sortTable(1)">Date Immunized (dd-mm-yyyy)</th>
-            <th onclick="sortTable(2)">Expiry Date (yrs)</th>
+            <th onclick="sortTable(0); arrowDown(0);">Vaccine Name <img id="img-0" width="20px" margin-left="10px" src="{% static 'records/arrow-right.png' %}"></th>
+            <th onclick="sortTable(1); arrowDown(1);">Date Immunized (yyyy-mm-dd)<img id="img-1" width="20px" margin-left="10px" src="{% static 'records/arrow-right.png' %}"></th>
+            <th onclick="sortTable(2); arrowDown(2);">Expiry Date (yrs)<img id="img-2" width="20px" margin-left="10px" src="{% static 'records/arrow-right.png' %}"></th>
         </tr>
         {% for vaccinations in all_patients.0.vaccinations.all %}
         <tr>
             <td>{{vaccinations.disease_name}}</td>
-            <td>{{vaccinations.day}}-{{vaccinations.month}}-{{vaccinations.year}}</td>
+            <td>{{vaccinations.year}}-{{vaccinations.month}}-{{vaccinations.day}}</td>
             <td>{{vaccinations.expiration_date}}</td>
         </tr>
         {% endfor %}
